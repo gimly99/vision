@@ -16,7 +16,6 @@ roi = np.loadtxt("roi.txt")
 
 while True:
     flag, img = cap.read()
-
     h = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))
     w = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))
     mapx, mapy = cv2.initUndistortRectifyMap(mtx, dist, None, newcameramtx, (h,w), m1type=cv2.CV_32FC1)
@@ -36,7 +35,7 @@ while True:
         x = int(dM10 / dArea)
         y = int(dM01 / dArea)
         cv2.circle(img, (x, y), 2, color_red, 2)
-        cv2.putText(img, "%d:%d" % (x,y-60), (x-120,y-120), 
+        cv2.putText(img, "%d:%d" % (x,y-60), (x-10,y-10), 
                     cv2.FONT_HERSHEY_SIMPLEX, 1, color_red, 2)
 
     cv2.imshow('result', img)
